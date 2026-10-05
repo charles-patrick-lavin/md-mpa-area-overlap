@@ -85,10 +85,19 @@ read_vec <- function(rel) {
 }
 
 to_mask <- function(x, tpl) {
-  if (inherits(x, "SpatRaster")) return(ifel(x, 1, NA))
+  align <- function(r) {
+    if (!isTRUE(compareGeom(r, tpl, stopOnError = FALSE))) {
+      r <- resample(r, tpl, method = "near")
+    }
+    r
+  }
+  if (inherits(x, "SpatRaster")) return(align(ifel(x, 1, NA)))
   if (is.null(x) || nrow(x) == 0) return(rast(tpl) * NA)
-  x <- st_transform(st_sf(geometry = st_geometry(x), crs = st_crs(x)), crs(tpl))
-  rasterize(vect(x), tpl, touches = TRUE, background = NA)
+  x <- st_sf(geometry = st_make_valid(st_geometry(x)), crs = st_crs(x))
+  x <- x[!st_is_empty(x), , drop = FALSE]
+  if (nrow(x) == 0) return(rast(tpl) * NA)
+  x <- st_transform(x, crs(tpl))
+  align(rasterize(vect(x), tpl, touches = TRUE, background = NA))
 }
 km2_area  <- function(m, km2) { v <- global(km2 * ifel(!is.na(m), 1, NA), "sum", na.rm = TRUE)[1, 1]; if (is.na(v)) 0 else v }
 km2_inter <- function(a, b, km2) { v <- global(km2 * ifel(!is.na(a) & !is.na(b), 1, NA), "sum", na.rm = TRUE)[1, 1]; if (is.na(v)) 0 else v }
@@ -115,25 +124,20 @@ rank <- mask(rank, vect(st_transform(st_make_valid(sa), crs(rank))), touches = T
 km2  <- cellSize(rank, unit = "km")
 
 # Prefer precomputed MPA masks when present; else build from vector layers
+# Always align to `rank` (precomputed masks can differ after study-area masking)
 est_path <- path_or_url("data", "reference", "established_mpa_mask.tif")
 prop_path <- path_or_url("data", "reference", "proposed_mpa_mask.tif")
 refs <- list(
-  established_MPAs = if (use_local && file.exists(est_path)) {
-    rast(est_path)
-  } else {
-    tryCatch(rast(est_path), error = function(e) {
-      to_mask(read_vec("verneplan_oppstart.gpkg"), rank)
-    })
-  },
-  proposed_MPAs = if (use_local && file.exists(prop_path)) {
-    rast(prop_path)
-  } else {
-    tryCatch(rast(prop_path), error = function(e) {
-      to_mask(read_vec("verneplan_ikke_oppstart.gpkg"), rank)
-    })
-  },
-  top_30 = ifel(rank >= 0.7, 1, NA),
-  top_10 = ifel(rank >= 0.9, 1, NA)
+  established_MPAs = to_mask(
+    tryCatch(rast(est_path), error = function(e) read_vec("verneplan_oppstart.gpkg")),
+    rank
+  ),
+  proposed_MPAs = to_mask(
+    tryCatch(rast(prop_path), error = function(e) read_vec("verneplan_ikke_oppstart.gpkg")),
+    rank
+  ),
+  top_30 = to_mask(rank >= 0.7, rank),
+  top_10 = to_mask(rank >= 0.9, rank)
 )
 
 # Overlap all layers × sublayers -------------------------------------------
