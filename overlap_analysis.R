@@ -26,6 +26,7 @@ layers <- c(
   liste_c_fjords              = "Liste_C_fjords.gpkg",
   fishing_spawning            = "fishing_spawning.gpkg",
   svos                        = "svos.gpkg",
+  svos_by_group               = "svos_by_group.gpkg",
   vmes                        = "vmes.gpkg"
 )
 layer_labels <- c(
@@ -41,6 +42,7 @@ layer_labels <- c(
   liste_c_fjords = "Liste C - fjords",
   fishing_spawning = "Fishing spawning",
   svos = "SVOs",
+  svos_by_group = "SVOs by group",
   vmes = "VMEs"
 )
 
