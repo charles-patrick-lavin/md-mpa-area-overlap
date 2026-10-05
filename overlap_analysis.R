@@ -68,7 +68,7 @@ if (use_local) {
 path_or_url <- function(...) {
   parts <- c(...)
   if (use_local) {
-    file.path(raw_base, parts)
+    do.call(file.path, as.list(c(raw_base, parts)))
   } else {
     # GDAL /vsicurl/ makes remote GeoPackage + GeoTIFF reads reliable
     paste0("/vsicurl/", paste(c(raw_base, parts), collapse = "/"))
