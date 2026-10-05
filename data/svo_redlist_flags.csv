@@ -2,27 +2,35 @@
 "SVOs","Halichoerus grypus | (no map type)",TRUE,"VU",1,"Halichoerus grypus",TRUE
 "SVOs","Halichoerus grypus | Feeding area",TRUE,"VU",1,"Halichoerus grypus",TRUE
 "SVOs","Gadus morhua | Spawning area",FALSE,NA,0,NA,FALSE
-"SVOs","(no species) | Living area",FALSE,"NT",0,NA,FALSE
+"SVOs","Benthic invertebrate | Living area",FALSE,"NT",0,NA,FALSE
 "SVOs","Cetorhinus maximus | Feeding area",TRUE,"EN",1,"Cetorhinus maximus",TRUE
-"SVOs","(no species) | High concentration",FALSE,NA,0,NA,FALSE
-"SVOs","(no species) | High production",FALSE,NA,0,NA,FALSE
+"SVOs","Zooplankton | High concentration",FALSE,NA,0,NA,FALSE
+"SVOs","Seabird | Living area",TRUE,"LC-CR",1,"Alca torda; Fratercula arctica; Fulmarus glacialis; Larus argentatus; Larus canus; Rissa tridactyla; Somateria mollissima; Stercorarius parasiticus; Sterna hirundo; Uria aalge",TRUE
+"SVOs","Zooplankton | High production",FALSE,NA,0,NA,FALSE
 "SVOs","Lamna nasus | Feeding area",TRUE,"VU",1,"Lamna nasus",TRUE
-"SVOs","(no species) | (no map type)",FALSE,NA,0,NA,FALSE
-"SVOs","(no species) | Feeding area",FALSE,NA,0,NA,FALSE
+"SVOs","Fish | (no map type)",FALSE,NA,0,NA,FALSE
+"SVOs","Zooplankton | (no map type)",FALSE,NA,0,NA,FALSE
+"SVOs","Fish | Feeding area",FALSE,NA,0,NA,FALSE
 "SVOs","Isidella lofotensis | Living area",FALSE,"NT",0,NA,FALSE
-"SVOs","(no species) | Breeding area",TRUE,"LC-CR",1,"Alca torda; Fratercula arctica; Fulmarus glacialis; Larus argentatus; Larus canus; Larus hyperboreus; Pagophila eburnea; Polysticta stelleri; Rissa tridactyla; Somateria mollissima; Stercorarius longicaudus; Stercorarius parasiticus; Sterna hirundo; Uria aalge; Uria lomvia; Xema sabini",TRUE
+"SVOs","Mesopelagic | (no map type)",FALSE,NA,0,NA,FALSE
+"SVOs","Seabird | Feeding area",TRUE,"LC-CR",1,"Alca torda; Fratercula arctica; Fulmarus glacialis; Larus argentatus; Larus canus; Larus hyperboreus; Pagophila eburnea; Polysticta stelleri; Rissa tridactyla; Somateria mollissima; Stercorarius longicaudus; Stercorarius parasiticus; Sterna hirundo; Uria aalge; Uria lomvia; Xema sabini",TRUE
+"SVOs","Seabird | Breeding area",TRUE,"LC-CR",1,"Alca torda; Fratercula arctica; Fulmarus glacialis; Larus argentatus; Larus canus; Larus hyperboreus; Pagophila eburnea; Polysticta stelleri; Rissa tridactyla; Somateria mollissima; Stercorarius longicaudus; Stercorarius parasiticus; Sterna hirundo; Uria aalge; Uria lomvia; Xema sabini",TRUE
+"SVOs","Fish | Living area",FALSE,"EN",0,NA,FALSE
 "SVOs","Radicipes gracilis | Living area",TRUE,"EN",1,"Radicipes gracilis",TRUE
-"SVOs","(no species) | Drift",FALSE,NA,0,NA,FALSE
-"SVOs","(no species) | Nursery area",FALSE,NA,0,NA,FALSE
+"SVOs","Fish | Drift",FALSE,NA,0,NA,FALSE
+"SVOs","Marine mammal | Feeding area",FALSE,NA,0,NA,FALSE
+"SVOs","Fish | Nursery area",FALSE,NA,0,NA,FALSE
 "SVOs","Balaena mysticetus | Living area",TRUE,"EN",1,"Balaena mysticetus",TRUE
 "SVOs","Melanogrammus aeglefinus | Spawning area",FALSE,NA,0,NA,FALSE
 "SVOs","Cystophora cristata | (no map type)",TRUE,"EN",1,"Cystophora cristata",TRUE
 "SVOs","Cystophora cristata | Feeding area",TRUE,"EN",1,"Cystophora cristata",TRUE
 "SVOs","Mallotus villosus | Feeding area",FALSE,NA,0,NA,FALSE
 "SVOs","Hyperoodon ampullatus | Feeding area",FALSE,"DD",0,NA,FALSE
+"SVOs","Other | (no map type)",FALSE,NA,0,NA,FALSE
 "SVOs","Boreogadus saida | Nursery area",TRUE,"EN",1,"Boreogadus saida",TRUE
-"SVOs","(no species) | Moulting area",TRUE,"LC-NT",1,"Alca torda; Fratercula arctica; Fulmarus glacialis; Larus argentatus; Larus canus; Larus hyperboreus; Pagophila eburnea; Polysticta stelleri; Rissa tridactyla; Somateria mollissima; Stercorarius longicaudus; Stercorarius parasiticus; Sterna hirundo; Uria aalge; Uria lomvia; Xema sabini",TRUE
-"SVOs","(no species) | Unique area",FALSE,NA,0,NA,FALSE
+"SVOs","Seabird | (no map type)",TRUE,"Seabird red-list (via navn)",1,"Alca torda; Fratercula arctica; Fulmarus glacialis; Larus argentatus; Larus canus; Larus hyperboreus; Pagophila eburnea; Polysticta stelleri; Rissa tridactyla; Somateria mollissima; Stercorarius longicaudus; Stercorarius parasiticus; Sterna hirundo; Uria aalge; Uria lomvia; Xema sabini",TRUE
+"SVOs","Seabird | Moulting area",TRUE,"LC-NT",1,"Alca torda; Fratercula arctica; Fulmarus glacialis; Larus argentatus; Larus canus; Larus hyperboreus; Pagophila eburnea; Polysticta stelleri; Rissa tridactyla; Somateria mollissima; Stercorarius longicaudus; Stercorarius parasiticus; Sterna hirundo; Uria aalge; Uria lomvia; Xema sabini",TRUE
+"SVOs","Zooplankton | Unique area",FALSE,NA,0,NA,FALSE
 "SVOs","Lycenchelys platyrhina | (no map type)",FALSE,NA,0,NA,FALSE
 "SVOs","Pagophilus groenlandicus | Feeding area",FALSE,NA,0,NA,FALSE
 "SVOs","Megaptera novaeangliae | Feeding area",FALSE,"LC",0,NA,FALSE
@@ -34,6 +42,7 @@
 "SVOs","Phoca hispida | Distribution area",FALSE,"VU",0,NA,FALSE
 "SVOs","Reinhardtius hippoglossoides | Spawning area",FALSE,"LC",0,NA,FALSE
 "SVOs","Umbellula encrinus | Living area",FALSE,"LC",0,NA,FALSE
+"SVOs","Unclassified | Living area",FALSE,NA,0,NA,FALSE
 "SVOs","Delphinapterus leucas | Living area",TRUE,"EN",1,"Delphinapterus leucas",TRUE
 "SVOs","Mallotus villosus | Spawning area",FALSE,NA,0,NA,FALSE
 "SVOs","Clupea harengus L. | Spawning area",FALSE,NA,0,NA,FALSE
