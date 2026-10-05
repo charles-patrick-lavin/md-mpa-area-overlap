@@ -6,7 +6,8 @@
 repo   <- Sys.getenv("GITHUB_REPO", unset = "charles-patrick-lavin/md-mpa-area-overlap")
 ref    <- Sys.getenv("GITHUB_REF",  unset = "main")                 # branch or tag
 outdir <- Sys.getenv("OVERLAP_OUTDIR", unset = "output")
-local_data <- Sys.getenv("OVERLAP_LOCAL_DATA", unset = "")          # optional: path to data/ for offline runs
+# Package root OR .../data — both work (script always looks under data/)
+local_root <- Sys.getenv("OVERLAP_LOCAL_DATA", unset = "")
 if (identical(repo, "YOUR_USER/YOUR_REPO") || !nzchar(repo)) {
   stop("Set Sys.setenv(GITHUB_REPO='user/repo') or edit the default `repo` at the top of this script.")
 }
@@ -52,15 +53,21 @@ suppressPackageStartupMessages({
 sf_use_s2(FALSE)
 dir.create(outdir, recursive = TRUE, showWarnings = FALSE)
 
-raw_base <- if (nzchar(local_data)) {
-  normalizePath(local_data, winslash = "/", mustWork = TRUE)
+use_local <- nzchar(local_root)
+if (use_local) {
+  local_root <- normalizePath(local_root, winslash = "/", mustWork = TRUE)
+  # Accept either package root or the data/ folder
+  if (basename(local_root) == "data" && dir.exists(file.path(dirname(local_root), "data"))) {
+    local_root <- dirname(local_root)
+  }
+  raw_base <- local_root
 } else {
-  sprintf("https://raw.githubusercontent.com/%s/%s", repo, ref)
+  raw_base <- sprintf("https://raw.githubusercontent.com/%s/%s", repo, ref)
 }
 
 path_or_url <- function(...) {
   parts <- c(...)
-  if (nzchar(local_data)) {
+  if (use_local) {
     file.path(raw_base, parts)
   } else {
     # GDAL /vsicurl/ makes remote GeoPackage + GeoTIFF reads reliable
@@ -111,14 +118,14 @@ km2  <- cellSize(rank, unit = "km")
 est_path <- path_or_url("data", "reference", "established_mpa_mask.tif")
 prop_path <- path_or_url("data", "reference", "proposed_mpa_mask.tif")
 refs <- list(
-  established_MPAs = if (nzchar(local_data) && file.exists(est_path)) {
+  established_MPAs = if (use_local && file.exists(est_path)) {
     rast(est_path)
   } else {
     tryCatch(rast(est_path), error = function(e) {
       to_mask(read_vec("verneplan_oppstart.gpkg"), rank)
     })
   },
-  proposed_MPAs = if (nzchar(local_data) && file.exists(prop_path)) {
+  proposed_MPAs = if (use_local && file.exists(prop_path)) {
     rast(prop_path)
   } else {
     tryCatch(rast(prop_path), error = function(e) {
