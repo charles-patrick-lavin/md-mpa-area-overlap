@@ -12,12 +12,14 @@ and writes `overlap_sublayers_vs_four_columns.csv`.
 | Path | Role |
 |------|------|
 | `overlap_analysis.R` | Compact tidyverse + sf + terra overlap script |
-| `data/layers/*.gpkg` | All Area Overlap vector themes (`sublayer` column); SVOs include `on_red_list` / seabird red-list attrs; `svos_by_group` uses Seabird / Zooplankton / Fish / … labels plus `has_red_list`, `n_red_list_species`, `red_list_species` |
+| `data/layers/*.gpkg` | Area Overlap vectors (`sublayer` column), incl. VMEs, Fishing spawning, SVOs (202 features), SVOs by group, **Seabirds** (44 species) |
+| `data/carbon/` | **Carbon** average top-10% GeoTIFFs (values + mask + display) |
 | `data/reference/` | CAZ rank, study area, MPA masks |
-| `data/overlap_sublayers_vs_four_columns.csv` | Current shiny-app results (incl. VMEs, SVOs by group; optional red-list flag columns) |
+| `data/overlap_sublayers_vs_four_columns.csv` | Current Area Overlap results (incl. Carbon, Seabirds, SVOs, VMEs, …) |
 | `data/svo_redlist_flags.csv` | Lookup of red-list flags by layer/sublayer |
 | `data/redlist_svo_overlap.csv` | Red-list species ↔ SVO overlap summary |
 | `data/redlist_seabirds_moved_to_svo.csv` | Seabirds removed from Species Occurrence red-list analysis |
+| `data/seabirds_seasonal_top10_inventory.csv` | Per-species seasonal top-10% cell counts |
 
 ## Required R packages
 

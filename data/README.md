@@ -8,7 +8,9 @@ All paths relative to `github_overlap_package/data/`.
 |------|-------------------|-------------------|--------------|
 | `vmes.gpkg` | VMEs | shapefile basename | ~0.3 MB |
 | `fishing_spawning.gpkg` | Fishing spawning | Gytefelt / Kysttorsk | ~42 MB |
-| `svos.gpkg` | SVOs | `art_latin \| kart_eng` | ~29 MB |
+| `svos.gpkg` | SVOs | unique feature labels (`001. name \| map type`) | ~29 MB |
+| `svos_by_group.gpkg` | SVOs by group | `group \| kart_eng` | medium |
+| `seabirds.gpkg` | Seabirds | species (seasonal top-10% union, CAZ-rasterized) | medium |
 | `verneplan_oppstart.gpkg` | Verneplan - oppstart | `navn_omr` | small |
 | `verneplan_ikke_oppstart.gpkg` | Verneplan - ikke oppstart | `navn_omr` | small |
 | `naturtyper_hb19_study_area.gpkg` | Marine naturtyper HB19 | `naturtype` | ~23 MB |
@@ -42,7 +44,17 @@ CSV; omit unless regenerating those two rows.
 |------|------|
 | `overlap_sublayers_vs_four_columns.csv` | Current results used by the shiny Area Overlap tab |
 
-## Optional `rasters/` (not bundled by default)
+## `carbon/` (Area Overlap raster)
+
+| File | Role |
+|------|------|
+| `carbon_average_top10.tif` | Carbon `average` band, top 10% values (CAZ-aligned) |
+| `carbon_average_top10_mask.tif` | Binary presence mask for overlap / violin |
+| `carbon_average_top10_display.tif` | Map display (continuous top-10% values) |
+
+Source: `Results_September_2026/carbon_map_log_cog.tif` → `average` → p90 threshold.
+
+## Optional `rasters/` (Bio-Oracle; not bundled by default)
 
 Copy from `shiny_app/data/Bio_Oracle/masks/` if regenerating Chlorophyll /
 Primary production / Sea ice CSV rows (~24 MB total).

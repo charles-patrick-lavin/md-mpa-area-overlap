@@ -1,0 +1,13 @@
+﻿"id","label","type","n_present_cells"
+"naturtyper_hb19","Marine naturtyper HB19 (full)","vector_all",1122
+"stromrike","Stromrike (full)","vector_all",70
+"wave_exposed_coastline","Wave Exposed Coastline (full)","vector_all",6557
+"fishing_spawning","Fishing spawning (full)","vector_all",3457
+"vmes","VMEs (full)","vector_all",2755
+"svos_by_group","SVOs by group (full)","vector_all",530435
+"seabirds","Seabirds (full)","vector_all",75240
+"carbon","Carbon (average top 10%)","raster_mask",35702
+"chl_baseline_surf","Chlorophyll p90 baseline 2000-2018 depthsurf","raster_mask",30567
+"chl_ssp585_surf","Chlorophyll p90 SSP585 2020-2100 depthsurf","raster_mask",28383
+"siconc_baseline_surf","Sea ice baseline 2000-2020 depthsurf","raster_mask",39623
+"siconc_ssp585_surf","Sea ice SSP585 2020-2100 depthsurf","raster_mask",28114
