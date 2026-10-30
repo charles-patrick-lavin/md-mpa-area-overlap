@@ -1,8 +1,8 @@
-# Data inventory — Area Overlap package
+# Data inventory â€” Area Overlap package
 
 All paths relative to `github_overlap_package/data/`.
 
-## `layers/` (analysis vectors — prefer GeoPackage)
+## `layers/` (analysis vectors â€” prefer GeoPackage)
 
 | File | Shiny layer label | `sublayer` source | Approx. size |
 |------|-------------------|-------------------|--------------|
@@ -31,10 +31,10 @@ CSV; omit unless regenerating those two rows.
 | File | Role |
 |------|------|
 | `caz_rank.tif` | CAZ rank raster (masked to study area in script) |
-| `study_area.gpkg` | MPA kandidatområder study area |
+| `study_area.gpkg` | MPA kandidatomrÃ¥der study area |
 | `established_mpa_mask.tif` | Established MPA mask (optional shortcut) |
 | `proposed_mpa_mask.tif` | Proposed MPA mask (optional shortcut) |
-| `mpa_top10.tif` | Top 10% mask (optional; script can rebuild as rank ≥ 0.9) |
+| `mpa_top10.tif` | Top 10% mask (optional; script can rebuild as rank â‰¥ 0.9) |
 | `mpa_masked.tif` | Deploy CAZ masked to study area (optional) |
 | `marin_vp_*.shp` (+ sidecars) | Source shapefiles if present (superseded by gpkgs in `layers/`) |
 
@@ -52,7 +52,7 @@ CSV; omit unless regenerating those two rows.
 | `carbon_average_top10_mask.tif` | Binary presence mask for overlap / violin |
 | `carbon_average_top10_display.tif` | Map display (continuous top-10% values) |
 
-Source: `Results_September_2026/carbon_map_log_cog.tif` → `average` → p90 threshold.
+Source: `Results_September_2026/carbon_map_log_cog.tif` â†’ `average` â†’ p90 threshold.
 
 ## Optional `rasters/` (Bio-Oracle; not bundled by default)
 
