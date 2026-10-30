@@ -54,10 +54,10 @@ CSV; omit unless regenerating those two rows.
 
 Source: `Results_September_2026/carbon_map_log_cog.tif` â†’ `average` â†’ p90 threshold.
 
-## Optional `rasters/` (Bio-Oracle; not bundled by default)
+## `Bio_Oracle/masks/` (Chlorophyll / Primary production / Sea ice)
 
-Copy from `shiny_app/data/Bio_Oracle/masks/` if regenerating Chlorophyll /
-Primary production / Sea ice CSV rows (~24 MB total).
+Analysis masks and display rasters for Area Overlap Bio-Oracle layers
+(~24 MB; 23 mask + 23 display GeoTIFFs). Groups: `chl_p90`, `phyc_p90`, `siconc`.
 
 ## Example raw URLs
 
