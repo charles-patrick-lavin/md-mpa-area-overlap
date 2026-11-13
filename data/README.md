@@ -1,42 +1,42 @@
-# Data inventory â€” Area Overlap package
+# Data inventory - Area Overlap package
 
 All paths relative to `github_overlap_package/data/`.
 
-## `layers/` (analysis vectors â€” prefer GeoPackage)
+## `layers/` (analysis vectors - prefer GeoPackage)
 
-| File | Shiny layer label | `sublayer` source | Approx. size |
-|------|-------------------|-------------------|--------------|
-| `vmes.gpkg` | VMEs | shapefile basename | ~0.3 MB |
-| `fishing_spawning.gpkg` | Fishing spawning | Gytefelt / Kysttorsk | ~42 MB |
-| `svos.gpkg` | SVOs | unique feature labels (`001. name \| map type`) | ~29 MB |
-| `svos_by_group.gpkg` | SVOs by group | `group \| kart_eng` | medium |
-| `seabirds.gpkg` | Seabirds | species (seasonal top-10% union, CAZ-rasterized) | medium |
-| `verneplan_oppstart.gpkg` | Verneplan - oppstart | `navn_omr` | small |
-| `verneplan_ikke_oppstart.gpkg` | Verneplan - ikke oppstart | `navn_omr` | small |
-| `naturtyper_hb19_study_area.gpkg` | Marine naturtyper HB19 | `naturtype` | ~23 MB |
-| `stromrike.gpkg` | Stromrike | `RegType` | ~0.5 MB |
-| `wave_exposed_coastline.gpkg` | Wave Exposed Coastline | `RegType` | ~30 MB |
-| `Liste_C_fjords.gpkg` | Liste C - fjords | `navn` | ~0.8 MB |
-| `fjord_sf_Ryfylke_intersects.gpkg` | Fjords - Ryfylke | `navn` | ~0.7 MB |
-| `fjord_sf_Nordvestlandet_intersects.gpkg` | Fjords - Nordvestlandet | `navn` | ~6 MB |
-| `fjord_sf_Nordland_intersects.gpkg` | Fjords - Nordland | `navn` | ~13 MB |
-| `fjord_sf_Skagerrak_intersects.gpkg` | Fjords - Skagerrak | `navn` | ~6 MB |
+| File | Shiny layer label | `sublayer` source | Notes |
+|------|-------------------|-------------------|-------|
+| `vmes.gpkg` | VMEs | VME class / basename | |
+| `fishing_spawning.gpkg` | Fishing spawning | Kyst / Hav / Arktis | |
+| `svos_by_group.gpkg` | SVOs by group | `group \| kart_eng` | |
+| `svo_omrader.gpkg` | SVO Omraader | SVO area name | |
+| `seabirds.gpkg` | Seabirds | species | seasonal top-10% union |
+| `coastal_habitats.gpkg` | Coastal habitats | Type / Name nest | HB19 + Stromrike + Wave exposed coastline |
+| `existing_protection.gpkg` | Existing protection | Type (incl. OECM anbefaling 2026) | |
+| `proposed_protection.gpkg` | Proposed protection | Type / Name | |
+| `liste_a.gpkg` | Liste A | area name | |
+| `liste_c_fjords.gpkg` | Liste C | `navn` | |
+| `fjords.gpkg` | Fjords | Region / Fjord nest | merged Ryfylke, Nordvestlandet, Nordland, Skagerrak |
+| `seamounts.gpkg` | Seamounts | | |
+| `seasonally_ice_covered_areas.gpkg` | Seasonally ice-covered areas | | |
+| `territorialgrense.gpkg` | Maritime grenser - territorialgrense | line | mapping |
+| `grunnlinje.gpkg` | Maritime grenser - grunnlinje | line | mapping |
 
-Maritime boundary **line** layers (territorialgrense / grunnlinje) are used
-for mapping in the shiny app but are optional for the four-column area overlap
-CSV; omit unless regenerating those two rows.
+Legacy split fjord region files, standalone OECM / verneplan / HB19 / Stromrike /
+wave-exposed / SVOs parent layers were removed; use the merged layers above
+(`fjords.gpkg`, `coastal_habitats.gpkg`, `existing_protection.gpkg`,
+`svos_by_group.gpkg` / `svo_omrader.gpkg`).
 
 ## `reference/` (masks & study area)
 
 | File | Role |
 |------|------|
 | `caz_rank.tif` | CAZ rank raster (masked to study area in script) |
-| `study_area.gpkg` | MPA kandidatomrÃ¥der study area |
+| `study_area.gpkg` | MPA kandidatomraader study area |
 | `established_mpa_mask.tif` | Established MPA mask (optional shortcut) |
 | `proposed_mpa_mask.tif` | Proposed MPA mask (optional shortcut) |
-| `mpa_top10.tif` | Top 10% mask (optional; script can rebuild as rank â‰¥ 0.9) |
+| `mpa_top10.tif` | Top 10% mask (optional; script can rebuild as rank >= 0.9) |
 | `mpa_masked.tif` | Deploy CAZ masked to study area (optional) |
-| `marin_vp_*.shp` (+ sidecars) | Source shapefiles if present (superseded by gpkgs in `layers/`) |
 
 ## Root
 
@@ -52,7 +52,7 @@ CSV; omit unless regenerating those two rows.
 | `carbon_average_top10_mask.tif` | Binary presence mask for overlap / violin |
 | `carbon_average_top10_display.tif` | Map display (continuous top-10% values) |
 
-Source: `Results_September_2026/carbon_map_log_cog.tif` â†’ `average` â†’ p90 threshold.
+Source: `Results_September_2026/carbon_map_log_cog.tif` -> `average` -> p90 threshold.
 
 ## `Bio_Oracle/masks/` (Chlorophyll / Primary production / Sea ice)
 
@@ -62,13 +62,13 @@ Analysis masks and display rasters for Area Overlap Bio-Oracle layers
 ## Example raw URLs
 
 ```
-https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/data/layers/vmes.gpkg
-https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/data/reference/caz_rank.tif
-https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/data/overlap_sublayers_vs_four_columns.csv
+https://raw.githubusercontent.com/charles-patrick-lavin/md-mpa-area-overlap/main/data/layers/vmes.gpkg
+https://raw.githubusercontent.com/charles-patrick-lavin/md-mpa-area-overlap/main/data/reference/caz_rank.tif
+https://raw.githubusercontent.com/charles-patrick-lavin/md-mpa-area-overlap/main/data/overlap_sublayers_vs_four_columns.csv
 ```
 
 Release-asset alternative (large files):
 
 ```r
-# piggyback::pb_download("fishing_spawning.gpkg", repo = "YOUR_USER/YOUR_REPO", tag = "v1")
+# piggyback::pb_download("fishing_spawning.gpkg", repo = "charles-patrick-lavin/md-mpa-area-overlap", tag = "v1")
 ```
